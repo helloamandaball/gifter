@@ -21,8 +21,14 @@ export const PostProvider = (props) => {
     }).then(getAllPosts);
   };
 
+  const searchPosts = (q) => {
+    return fetch(`https://localhost:44325/api/post/search?q=${q}&sortDesc=true`)
+    .then((res) => res.json())
+    .then(setPosts);
+  };
+
   return (
-    <PostContext.Provider value={{ posts, getAllPosts, addPost }}>
+    <PostContext.Provider value={{ posts, getAllPosts, addPost, searchPosts }}>
       {props.children}
     </PostContext.Provider>
   );

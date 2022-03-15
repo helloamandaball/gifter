@@ -1,20 +1,18 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { PostProvider } from "./providers/PostProvider";
 import PostList from "./components/PostList";
-import PostForm from "./components/PostForm"
+import PostSearch from "./components/PostSearch"
+import PostForm from "./components/PostForm";
 
 function App() {
   return (
     <div className="App">
       <PostProvider>
-        <PostForm>
-            <Routes>
-                <Route path="posts/create/*" element={<PostForm />} />
-            </Routes>
-        </ PostForm>
-        <PostList />
+        <Routes>
+            <Route path="/" exact element={<><PostSearch /><PostForm /><PostList /></>}/>
+        </Routes>
       </PostProvider>
     </div>
   );

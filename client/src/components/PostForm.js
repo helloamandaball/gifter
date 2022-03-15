@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
 import { PostContext } from "../providers/PostProvider"
 import Post from "./Post";
 
@@ -11,8 +10,6 @@ export const PostForm = () => {
         imageUrl: "",
         userProfileId: +localStorage.activeUser
       });
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         getAllPosts()
@@ -30,9 +27,9 @@ export const PostForm = () => {
     }
 
     return (
-      <>
+      <div className="mx-4">
         <div className="col-md-10 mx-auto">
-            <form className="card col-sm-12 mx-auto pt-3 pr-3">
+            <form className="card bg-light col-sm-12 mx-auto pt-3 pr-3">
                 <div className="form-group row col-md-12 mx-auto mb-3">
                     <label htmlFor="title" className="col-lg-2 col-form-label text-left">Post Title:</label>
                     <div className="col-lg-10">
@@ -66,7 +63,7 @@ export const PostForm = () => {
                 </div>
             </form>
         </div>
-      </>
+      </div>  
     )
 }
 

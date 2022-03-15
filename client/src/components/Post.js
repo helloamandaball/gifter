@@ -1,16 +1,16 @@
 import React from "react";
 import { Card, CardImg, CardBody } from "reactstrap";
 
-const Post = ({ post }) => {
+const Post = ({ postProp }) => {
   return (
     <Card className="m-4">
-      <p className="text-left px-2">Posted by: {post.userProfile.name}</p>
-      <CardImg top src={post.imageUrl} alt={post.title} />
+      <p className="text-left px-2">Posted by: {postProp.userProfile.name}</p>
+      <CardImg top src={postProp.imageUrl} alt={postProp.title} />
       <CardBody>
         <p>
-          <strong>{post.title}</strong>
+          <strong>{postProp.title}</strong>
         </p>
-        <p>{post.caption}</p>
+        <p>{postProp.caption}</p>
       </CardBody>
     </Card>
   );

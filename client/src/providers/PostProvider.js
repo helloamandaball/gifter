@@ -18,7 +18,7 @@ export const PostProvider = (props) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(post),
-    });
+    }).then(getAllPosts);
   };
 
   return (

@@ -6,6 +6,10 @@ namespace Gifter.Models
 {
     public class Post
     {
+        public Post()
+        {
+            DateCreated = DateTime.Now;
+        }
         public int Id { get; set; }
 
         [Required]
@@ -16,7 +20,7 @@ namespace Gifter.Models
 
         public string Caption { get; set; }
 
-        [Required]
+        
         public DateTime DateCreated { get; set; }
 
         [Required]

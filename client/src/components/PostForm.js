@@ -6,11 +6,10 @@ import Post from "./Post";
 export const PostForm = () => {
     const { addPost, getAllPosts } = useContext(PostContext)
 
-    const [posts, setPosts] = useState({
+    const [post, setPosts] = useState({
         title: "",
         imageUrl: "",
-        dateCreated: "",
-        userId: +localStorage.activeUser
+        userProfileId: +localStorage.activeUser
       });
 
     const navigate = useNavigate();
@@ -20,15 +19,14 @@ export const PostForm = () => {
       }, [])
 
     const handleControlledInputChange = (event) => {
-        const newPost = { ...posts }
+        const newPost = { ...post }
         newPost[event.target.id] = event.target.value
         setPosts(newPost)
     }
 
     const handleSavePost = (event) => {
         event.preventDefault()
-        addPost(posts)
-        .then(() => navigate("api/Post"))
+        addPost(post)
     }
 
     return (
@@ -36,25 +34,25 @@ export const PostForm = () => {
         <div className="col-md-10 mx-auto">
             <form className="card col-sm-12 mx-auto pt-3 pr-3">
                 <div className="form-group row col-md-12 mx-auto mb-3">
-                    <label htmlFor="post-title" className="col-sm-2 col-form-label text-left">Post Title:</label>
-                    <div className="col-sm-10">
-                        <input type="text" className="form-control" id="post-title" placeholder="Enter post title here..."
+                    <label htmlFor="title" className="col-lg-2 col-form-label text-left">Post Title:</label>
+                    <div className="col-lg-10">
+                        <input type="text" className="form-control" id="title" placeholder="Enter post title here..."
                         onChange={handleControlledInputChange}
                         value={Post.title}/>
                     </div>
                 </div>
                 <div className="form-group row col-md-12 mx-auto mb-3">
-                    <label htmlFor="image-url" className="col-sm-2 col-form-label text-left">Image URL:</label>
-                    <div className="col-sm-10">
-                        <input type="url" className="form-control" id="image-url" placeholder="Enter image url here..."
+                    <label htmlFor="imageUrl" className="col-lg-2 col-form-label text-left">Image URL:</label>
+                    <div className="col-lg-10">
+                        <input type="url" className="form-control" id="imageUrl" placeholder="Enter image url here..."
                         onChange={handleControlledInputChange}
                         value={Post.ImageUrl}/>
                     </div>
                 </div>
                 <div className="form-group row col-md-12 mx-auto mb-3">
-                    <label htmlFor="post-caption" className="col-sm-2 col-form-label text-left">Caption:</label>
-                    <div className="col-sm-10">
-                        <textarea type="textarea" className="form-control" id="post-caption" placeholder="Enter caption here..."
+                    <label htmlFor="caption" className="col-lg-2 col-form-label text-left">Caption:</label>
+                    <div className="col-lg-10">
+                        <textarea type="textarea" className="form-control" id="caption" placeholder="Enter caption here..."
                         onChange={handleControlledInputChange}
                         value={Post.Caption}/>
                     </div>

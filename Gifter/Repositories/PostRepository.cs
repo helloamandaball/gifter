@@ -292,7 +292,7 @@ namespace Gifter.Repositories
 
                     DbUtils.AddParameter(cmd, "@Title", post.Title);
                     DbUtils.AddParameter(cmd, "@Caption", post.Caption);
-                    DbUtils.AddParameter(cmd, "@DateCreated", post.DateCreated);
+                    DbUtils.AddParameter(cmd, "@DateCreated", DateTime.Now);
                     DbUtils.AddParameter(cmd, "@ImageUrl", post.ImageUrl);
                     DbUtils.AddParameter(cmd, "@UserProfileId", post.UserProfileId);
                     DbUtils.AddParameter(cmd, "@Id", post.Id);

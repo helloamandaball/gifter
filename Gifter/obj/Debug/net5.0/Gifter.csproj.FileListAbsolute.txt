@@ -202,3 +202,6 @@ C:\Users\hello\workspace\backend\book-3\Gifter\Gifter\obj\Debug\net5.0\refint\Gi
 C:\Users\hello\workspace\backend\book-3\Gifter\Gifter\obj\Debug\net5.0\Gifter.pdb
 C:\Users\hello\workspace\backend\book-3\Gifter\Gifter\obj\Debug\net5.0\Gifter.genruntimeconfig.cache
 C:\Users\hello\workspace\backend\book-3\Gifter\Gifter\obj\Debug\net5.0\ref\Gifter.dll
+C:\Users\hello\workspace\backend\book-3\Gifter\Gifter\bin\Debug\net5.0\client\package-lock.json
+C:\Users\hello\workspace\backend\book-3\Gifter\Gifter\bin\Debug\net5.0\client\package.json
+C:\Users\hello\workspace\backend\book-3\Gifter\Gifter\bin\Debug\net5.0\client\public\manifest.json

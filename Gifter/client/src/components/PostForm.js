@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom";
 import { PostContext } from "../providers/PostProvider"
 import Post from "./Post";
 
@@ -10,6 +11,8 @@ export const PostForm = () => {
         imageUrl: "",
         userProfileId: +localStorage.activeUser
       });
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         getAllPosts()
@@ -24,6 +27,7 @@ export const PostForm = () => {
     const handleSavePost = (event) => {
         event.preventDefault()
         addPost(post)
+        .then(() => navigate("/"));
     }
 
     return (

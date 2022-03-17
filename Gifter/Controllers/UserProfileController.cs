@@ -34,7 +34,7 @@ namespace Gifter.Controllers
             }
             return Ok(user);
         }
-        [HttpGet("/GetUserProfileWithPosts/{id}")]
+        [HttpGet("UserPosts/{id}")]
         public IActionResult GetPostIdWithComments(int id)
         {
             var user = _userProfileRepository.GetUserProfileIdWithPostsAndComments(id);

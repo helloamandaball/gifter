@@ -106,9 +106,8 @@ namespace Gifter.Repositories
                     UserProfile user = null;
                     var posts = new List<Post>();
                     while (reader.Read())
-                   {
+                    {
                         if (user == null)
-
                         {
                             user = new UserProfile()
                             {
@@ -121,16 +120,12 @@ namespace Gifter.Repositories
 
                                 Posts = posts
                             };
-
                         }
 
                         var postId = DbUtils.GetInt(reader, "PostId");
 
-                        var existingPost = posts.FirstOrDefault(p => p.Id == postId);
-
-                        if (DbUtils.IsNotDbNull(reader, "PostUserProfileId") && !posts.Contains(existingPost))
+                        if (DbUtils.IsNotDbNull(reader, "PostUserProfileId") && !posts.Contains(posts.FirstOrDefault(p => p.Id == postId)))
                         {
-
                             user.Posts.Add(new Post()
                             {
                                 Id = postId,
@@ -139,21 +134,34 @@ namespace Gifter.Repositories
                                 DateCreated = DbUtils.GetDateTime(reader, "PostDateCreated"),
                                 ImageUrl = DbUtils.GetString(reader, "PostImageUrl"),
                                 UserProfileId = id,
+                                UserProfile = new UserProfile()
+                                {
+                                    Name = DbUtils.GetString(reader, "Name"),
+                                    Email = DbUtils.GetString(reader, "Email"),
+                                    DateCreated = DbUtils.GetDateTime(reader, "UserProfileDateCreated"),
+                                    ImageUrl = DbUtils.GetString(reader, "UserProfileImageUrl"),
+                                },
 
                                 Comments = new List<Comment>()
                             });
-                         
-
                         }
+
                         foreach (var post in posts)
-                            if (DbUtils.IsNotDbNull(reader, "CommentId"))
+                            if (DbUtils.IsNotDbNull(reader, "CommentId") && post.Id == postId)
                             {
                                 post.Comments.Add(new Comment()
                                 {
                                     Id = DbUtils.GetInt(reader, "CommentId"),
                                     Message = DbUtils.GetString(reader, "Message"),
-                                    PostId = DbUtils.GetInt(reader, "CommentPostId"),
-                                    UserProfileId = id
+                                    PostId = postId,
+                                    UserProfileId = id,
+                                    UserProfile = new UserProfile()
+                                    {
+                                        Name = DbUtils.GetString(reader, "Name"),
+                                        Email = DbUtils.GetString(reader, "Email"),
+                                        DateCreated = DbUtils.GetDateTime(reader, "UserProfileDateCreated"),
+                                        ImageUrl = DbUtils.GetString(reader, "UserProfileImageUrl"),
+                                    }
                                 });
                             }
                     }

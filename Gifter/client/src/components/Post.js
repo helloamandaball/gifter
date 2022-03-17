@@ -17,9 +17,7 @@ const Post = ({ postProp }) => {
             <strong>{postProp.title}</strong>
         </Link>
         <p>{postProp.caption}</p>
-        {/* <ul>
-            {postProp.comments.map(pc => <li key={pc.id}> {pc.userProfile.name}: {pc.message}  </li>)}
-        </ul> */}
+        
       </CardBody>
     </Card>
   );

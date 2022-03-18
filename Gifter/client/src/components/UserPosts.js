@@ -20,7 +20,7 @@ const UserPosts = () => {
     return (
         <div className="container">
         <div className="row justify-content-center">
-            <div className="cards-column">
+            <div className="cards-column col-md-6">
             {user.posts.map((singlePostInLoop) => (
                 <Post key={singlePostInLoop.id} postProp={singlePostInLoop} />
             ))}
